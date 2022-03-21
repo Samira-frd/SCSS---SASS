@@ -1,0 +1,252 @@
+@import "variables";
+@import "mixin";
+
+
+*{
+    @include overal;
+}
+
+body{
+    background-color: $bgColor;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 3rem;
+    background-color: $primaryColor;
+
+    h1{
+        @include textStyle(1.3rem, bold, $secondaryColor)
+    }
+
+   
+}
+
+
+.navbar{
+    display: flex;
+    align-items: center;
+    
+    img{
+        width: 60px;
+        margin: 0 20px;
+    }
+    ul{
+        list-style-type: none;
+        display: flex;
+    }
+    nav{
+        margin-right: 40px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+a{
+    text-decoration: none;
+    padding: 10px;
+    
+    @include textStyle(1rem, bold, $secondaryColor);
+    &:hover{
+        transition: all 0.15s ease-in ;
+        color: $textColor;
+        -webkit-transition: all 0.15s ease-in ;
+        -moz-transition: all 0.15s ease-in ;
+        -ms-transition: all 0.15s ease-in ;
+        -o-transition: all 0.15s ease-in ;
+}
+}
+
+.hamburger-menu{
+    display: none;
+    flex-direction: column;
+    
+    span{
+        display: inline-block;
+        height: 4px;
+        width: 30px;
+        margin: 3px;
+        background-color: $secondaryColor;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+}
+}
+
+
+.main{
+    display: flex;
+    margin: 2rem 3rem;
+    aside{
+        flex-direction: column;
+        width: 25%;
+        margin-right: 25px;
+        @include bodyStyle;
+        @include boxStyle;
+        div{
+            background-color: $primaryColor;
+            height: 110px;
+            text-align: center;
+            width: 100%;
+            margin: 20px 10px;
+            line-height: 110px;
+            @include boxStyle;
+            @include textStyle(1rem, bold, $secondaryColor);
+        }
+    }
+    main{
+        @include bodyStyle;
+        @include boxStyle;
+        width: 75%;
+        flex-direction: column;
+        img{
+            height: 200px;
+            width: 200px;
+            @include boxStyle;
+        }
+        h2{
+            @include textStyle(4rem, bold, $primaryColor);
+            margin: 2rem 0 3rem;
+        }
+        p{
+            @include textStyle(2rem, bold, $textColor);
+        }
+    }
+
+}
+
+
+.cards{
+    width: calc(100% - 6rem);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.card{
+    @include boxStyle;
+    img{
+        width: 100%;
+        display: block;
+    }
+    .card-content{
+        line-height: 1.5rem;
+        padding: 15px;
+        background-color: $secondaryColor;
+        p{
+            margin: 10px 0;
+            @include textStyle(1.1rem, 100, $textColor);
+        }
+        
+        span{
+            display: inline-block;
+            margin: 10px 0;
+            @include textStyle(0.9rem, bold, $primaryColor);
+        }
+    }
+}
+
+footer{
+    display: flex;
+    padding: 2rem 3rem;
+    margin-top: 30px;
+    background-color: $primaryColor;
+    .summery{
+        width: 50%;
+        p{
+            @include textStyle(1.2rem, 100, $secondaryColor);
+        }
+    }
+
+    .links{
+        padding: 0 5REM;
+
+        UL{
+            list-style: none;
+        }
+
+        a{
+            text-decoration: none;
+            @include textStyle(0.9rem,normal,$secondaryColor);
+            margin-bottom: 10px;
+            display: inline-block;
+            transition: all 0.2s ease-in ;
+            -webkit-transition: all 0.2s ease-in ;
+            -moz-transition: all 0.2s ease-in ;
+            -ms-transition: all 0.2s ease-in ;
+            -o-transition: all 0.2s ease-in ;
+            &:hover{
+                color: $textColor;
+            }
+        }
+    }
+}
+
+@include media(L){
+    .cards{
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+    }
+
+   
+}
+
+@include media(M){
+    .hamburger-menu{
+        display: flex;
+    }
+
+    .navbar{
+        display: none;
+    }
+    .main{
+        flex-direction: column-reverse;        
+        margin: 1rem;
+        main{     
+            width: calc(100% - 2rem);      
+            height: 500px;
+            margin-bottom: 20px;
+            p{
+                font-size: 1.3rem;
+            }
+        }
+        aside {
+            width: calc(100% - 2rem);
+            height: 600px;
+        }
+     }
+
+     .cards{
+         grid-template-columns: 1fr;
+         margin: 0 auto;  
+            
+     }
+
+     footer{
+         flex-direction: column;
+         .summery{
+             width: 100%;
+             margin-bottom: 30px;
+         }
+
+         .links{
+            width: 100%;
+            padding: 0;
+                    
+
+                a{
+                    padding-left: 0;
+                    
+                }
+            
+        }
+     }
+}
+
